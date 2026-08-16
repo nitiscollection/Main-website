@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Shop | Niti's Online Store</title>
+
+    <meta name="description"
+          content="Shop beautiful jewellery, sarees, handmade flowers and gifts at Niti's Online Store.">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        /* =========================================
+           SHOP PAGE
+        ========================================= */
+
+        .shop-hero {
+            padding: 75px 0 65px;
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    #f7e3df 0,
+                    transparent 30%
+                ),
+                var(--cream);
+            text-align: center;
+        }
+
+        .shop-hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(45px, 5vw, 65px);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .shop-hero h1 span {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .shop-hero p {
+            max-width: 600px;
+            margin: auto;
+            color: var(--text-light);
+        }
+
+
+        /* =========================================
+           SHOP SECTION
+        ========================================= */
+
+        .shop-section {
+            padding: 70px 0 100px;
+            background: white;
+        }
+
+
+        /* =========================================
+           SHOP TOP BAR
+        ========================================= */
+
+        .shop-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .product-count {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .sort-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-box label {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .sort-box select {
+            padding: 10px 35px 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            background: white;
+            color: var(--dark);
+            font-family: inherit;
+            cursor: pointer;
+            outline: none;
+        }
+
+
+        /* =========================================
+           CATEGORY FILTERS
+        ========================================= */
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 22px;
+            border-radius: 30px;
+            background: var(--cream);
+            border: 1px solid var(--border);
+            color: #5d5353;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+
+        /* =========================================
+           SHOP PRODUCT GRID
+        ========================================= */
+
+        .shop-product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .shop-product-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .shop-product-card:hover {
+            transform: translateY(-6px);
+            box-shadow:
+                0 20px 45px
+                rgba(80, 40, 40, 0.09);
+        }
+
+
+        /* =========================================
+           PRODUCT IMAGE
+        ========================================= */
+
+        .shop-product-image {
+            height: 330px;
+            background: #f5e8e4;
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 70px;
+        }
+
+        .shop-product-image.saree {
+            background: #eee5f3;
+        }
+
+        .shop-product-image.jewellery {
+            background: #f7eee8;
+        }
+
+        .shop-product-image.flowers {
+            background: #f8e8ea;
+        }
+
+        .shop-product-image.gift {
+            background: #f4eee4;
+        }
+
+        .shop-product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            background: var(--primary);
+            color: white;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .shop-wishlist {
+            position: absolute;
+            top: 13px;
+            right: 13px;
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: var(--primary);
+
+            font-size: 21px;
+
+            box-shadow:
+                0 5px 15px
+                rgba(0, 0, 0, 0.06);
+        }
+
+
+        /* =========================================
+           PRODUCT INFORMATION
+        ========================================= */
+
+        .shop-product-info {
+            padding: 20px;
+        }
+
+        .shop-product-category {
+            color: var(--primary);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 6px;
+        }
+
+        .shop-product-info h3 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 20px;
+
+            line-height: 1.25;
+
+            margin-bottom: 8px;
+        }
+
+        .shop-product-description {
+            color: var(--text-light);
+
+            font-size: 12px;
+
+            margin-bottom: 15px;
+        }
+
+        .shop-product-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+
+        .shop-product-price {
+            font-size: 18px;
+
+            font-weight: 700;
+        }
+
+        .shop-add-cart {
+            padding: 9px 15px;
+
+            border-radius: 25px;
+
+            background: var(--soft-pink);
+
+            color: var(--primary-dark);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+        .shop-add-cart:hover {
+            background: var(--primary);
+
+            color: white;
+        }
+
+
+        /* =========================================
+           VIEW PRODUCT BUTTON
+        ========================================= */
+
+        .view-product {
+            display: block;
+
+            text-align: center;
+
+            border-top: 1px solid var(--border);
+
+            padding: 11px;
+
+            color: var(--primary);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .view-product:hover {
+            background: var(--light-pink);
+        }
+
+
+        /* =========================================
+           WHATSAPP CTA
+        ========================================= */
+
+        .shop-whatsapp {
+            margin-top: 80px;
+
+            padding: 45px;
+
+            border-radius: 25px;
+
+            background: var(--light-pink);
+
+            text-align: center;
+        }
+
+        .shop-whatsapp h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        .shop-whatsapp p {
+            color: var(--text-light);
+
+            max-width: 600px;
+
+            margin: 0 auto 22px;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 1000px) {
+
+            .shop-product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 760px) {
+
+            .shop-hero {
+                padding: 55px 0;
+            }
+
+            .shop-section {
+                padding: 55px 0 75px;
+            }
+
+            .shop-topbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .sort-box {
+                justify-content: space-between;
+            }
+
+            .sort-box select {
+                flex: 1;
+            }
+
+            .shop-product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+
+            .shop-product-image {
+                height: 240px;
+                font-size: 55px;
+            }
+
+            .shop-product-info {
+                padding: 14px;
+            }
+
+            .shop-product-info h3 {
+                font-size: 17px;
+            }
+
+            .shop-product-description {
+                display: none;
+            }
+
+            .shop-product-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .shop-add-cart {
+                width: 100%;
+            }
+
+            .shop-whatsapp {
+                padding: 35px 20px;
+            }
+
+        }
+
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 450px) {
+
+            .shop-product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-product-image {
+                height: 300px;
+            }
+
+            .shop-product-bottom {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .shop-add-cart {
+                width: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+            <a href="index.html" class="logo">
+
+                <span>
+                    Niti's
+                </span>
+
+                <small>
+                    ONLINE STORE
+                </small>
+
+            </a>
+
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="shop.html">
+                    Shop
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+                <a href="index.html#custom">
+                    Custom Orders
+                </a>
+
+                <a href="index.html#contact">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <button
+                    class="icon-btn"
+                    aria-label="Search">
+
+                    🔍
+
+                </button>
+
+
+                <button
+                    class="icon-btn"
+                    aria-label="Shopping Cart">
+
+                    🛍️
+
+                    <span class="cart-count">
+                        0
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="menu-btn"
+                    aria-label="Menu">
+
+                    ☰
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         SHOP HERO
+    ========================================= -->
+
+    <section class="shop-hero">
+
+        <div class="container">
+
+            <p class="eyebrow">
+                NITI'S COLLECTION
+            </p>
+
+            <h1>
+                Shop <span>Beautifully.</span>
+            </h1>
+
+            <p>
+                Explore our collection of jewellery,
+                sarees, handmade flowers and thoughtful gifts.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         SHOP
+    ========================================= -->
+
+    <main class="shop-section">
+
+        <div class="container">
+
+
+            <!-- CATEGORY FILTERS -->
+
+            <div class="category-filters">
+
+                <button class="filter-btn active">
+                    All
+                </button>
+
+                <button class="filter-btn">
+                    Jewellery
+                </button>
+
+                <button class="filter-btn">
+                    Sarees
+                </button>
+
+                <button class="filter-btn">
+                    Handmade Flowers
+                </button>
+
+                <button class="filter-btn">
+                    Gifts
+                </button>
+
+            </div>
+
+
+            <!-- TOP BAR -->
+
+            <div class="shop-topbar">
+
+                <p class="product-count">
+                    Showing 12 products
+                </p>
+
+
+                <div class="sort-box">
+
+                    <label for="sort">
+                        Sort by:
+                    </label>
+
+                    <select id="sort">
+
+                        <option>
+                            Featured
+                        </option>
+
+                        <option>
+                            Price: Low to High
+                        </option>
+
+                        <option>
+                            Price: High to Low
+                        </option>
+
+                        <option>
+                            Newest
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 PRODUCTS
+            ========================================= -->
+
+            <div class="shop-product-grid">
+
+
+                <!-- PRODUCT 1 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image jewellery">
+
+                        <span>
+                            💎
+                        </span>
+
+                        <span class="shop-product-badge">
+                            New
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Jewellery
+                        </p>
+
+                        <h3>
+                            Elegant Pearl Earrings
+                        </h3>
+
+                        <p class="shop-product-description">
+                            Simple and elegant earrings
+                            for everyday and special occasions.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹349
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 2 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image flowers">
+
+                        <span>
+                            🌹
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Handmade Flowers
+                        </p>
+
+                        <h3>
+                            Handmade Rose
+                        </h3>
+
+                        <p class="shop-product-description">
+                            A beautiful handmade flower
+                            that lasts for a long time.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹149
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 3 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image jewellery">
+
+                        <span>
+                            📿
+                        </span>
+
+                        <span class="shop-product-badge">
+                            Popular
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Jewellery
+                        </p>
+
+                        <h3>
+                            Pearl Bracelet
+                        </h3>
+
+                        <p class="shop-product-description">
+                            Elegant pearl bracelet
+                            with a timeless look.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹299
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 4 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image flowers">
+
+                        <span>
+                            💐
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Handmade Flowers
+                        </p>
+
+                        <h3>
+                            Handmade Flower Bouquet
+                        </h3>
+
+                        <p class="shop-product-description">
+                            A beautiful handmade bouquet
+                            for gifting and celebrations.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹499
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 5 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image saree">
+
+                        <span>
+                            👗
+                        </span>
+
+                        <span class="shop-product-badge">
+                            New
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Sarees
+                        </p>
+
+                        <h3>
+                            Elegant Designer Saree
+                        </h3>
+
+                        <p class="shop-product-description">
+                            A graceful saree suitable for
+                            festive and special occasions.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹1,499
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 6 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image flowers">
+
+                        <span>
+                            🌷
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Handmade Flowers
+                        </p>
+
+                        <h3>
+                            Handmade Flower Set
+                        </h3>
+
+                        <p class="shop-product-description">
+                            A colourful collection of
+                            handmade flowers.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹399
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 7 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image jewellery">
+
+                        <span>
+                            ✨
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Jewellery
+                        </p>
+
+                        <h3>
+                            Traditional Necklace Set
+                        </h3>
+
+                        <p class="shop-product-description">
+                            A beautiful traditional necklace
+                            set for festive occasions.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹699
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 8 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image saree">
+
+                        <span>
+                            🌺
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Sarees
+                        </p>
+
+                        <h3>
+                            Festive Collection Saree
+                        </h3>
+
+                        <p class="shop-product-description">
+                            An elegant saree designed for
+                            festive celebrations.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹1,899
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 9 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image jewellery">
+
+                        <span>
+                            💍
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Jewellery
+                        </p>
+
+                        <h3>
+                            Classic Ring
+                        </h3>
+
+                        <p class="shop-product-description">
+                            A simple and elegant accessory
+                            for everyday styling.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹249
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 10 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image saree">
+
+                        <span>
+                            👗
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Sarees
+                        </p>
+
+                        <h3>
+                            Traditional Saree
+                        </h3>
+
+                        <p class="shop-product-description">
+                            A timeless traditional saree
+                            for festive occasions.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹1,299
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 11 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image flowers">
+
+                        <span>
+                            🌸
+                        </span>
+
+                        <span class="shop-product-badge">
+                            Popular
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Handmade Flowers
+                        </p>
+
+                        <h3>
+                            Decorative Flower Bunch
+                        </h3>
+
+                        <p class="shop-product-description">
+                            Handmade decorative flowers
+                            for home and gifting.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹299
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PRODUCT 12 -->
+
+                <article class="shop-product-card">
+
+                    <div class="shop-product-image gift">
+
+                        <span>
+                            🎁
+                        </span>
+
+                        <button class="shop-wishlist">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="shop-product-info">
+
+                        <p class="shop-product-category">
+                            Gifts
+                        </p>
+
+                        <h3>
+                            Special Gift Hamper
+                        </h3>
+
+                        <p class="shop-product-description">
+                            A thoughtful gift collection
+                            for someone special.
+                        </p>
+
+                        <div class="shop-product-bottom">
+
+                            <strong class="shop-product-price">
+                                ₹799
+                            </strong>
+
+                            <button class="shop-add-cart">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="view-product">
+                        View Product →
+                    </a>
+
+                </article>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 WHATSAPP CTA
+            ========================================= -->
+
+            <div class="shop-whatsapp">
+
+                <h2>
+                    Can't find what you're looking for?
+                </h2>
+
+                <p>
+                    Looking for a particular saree, jewellery
+                    design or custom flower arrangement?
+                    Contact us and we'll be happy to help.
+                </p>
+
+                <a href="#" class="btn btn-primary">
+                    Ask Us on WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo footer-logo">
+
+                    <span>
+                        Niti's
+                    </span>
+
+                    <small>
+                        ONLINE STORE
+                    </small>
+
+                </a>
+
+                <p>
+                    Beautiful jewellery, elegant sarees,
+                    handmade flowers and thoughtful gifts.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Shop
+                </h4>
+
+                <a href="#">
+                    Jewellery
+                </a>
+
+                <a href="#">
+                    Sarees
+                </a>
+
+                <a href="#">
+                    Handmade Flowers
+                </a>
+
+                <a href="#">
+                    Gifts
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Help
+                </h4>
+
+                <a href="index.html#contact">
+                    Contact Us
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+                <a href="#">
+                    FAQs
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Follow Us
+                </h4>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    WhatsApp
+                </a>
+
+                <a href="#">
+                    Facebook
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    © 2026 Niti's Online Store.
+                    All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
